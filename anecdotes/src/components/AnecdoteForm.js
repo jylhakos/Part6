@@ -30,7 +30,7 @@ const AnecdoteForm = (props) => {
 
     setTimeout(() => {
       dispatch(show('HIDE'))
-      }, 10000)
+      }, 5000)
   }
 
   return (

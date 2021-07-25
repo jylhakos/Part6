@@ -29,11 +29,25 @@ export const create = (anecdote) => {
   }
 }
 
+export const initializeAnecdotes = (anecdote) => {
+  return {
+    type: 'INIT',
+    payload: {
+      content: anecdote.content,
+      id: anecdote.id,
+      votes: anecdote.votes
+    }
+  }
+}
+
 const initialState = anecdotesAtStart.map(asObject)
 
-console.log('INITIAL STATE: ', typeof initialState, initialState )
+//console.log('INITIAL STATE: ', typeof initialState, initialState )
 
-const anecdoteReducer = (state = initialState, action) => {
+// 6.13
+const anecdoteReducer = (state = [], action) => {
+
+//const anecdoteReducer = (state = initialState, action) => {
 
   console.log('STATE: ', state, ' ACTION', action)
 
@@ -50,6 +64,9 @@ const anecdoteReducer = (state = initialState, action) => {
           votes: anecdote.votes+1
         }
       })
+    // 6.13
+    case 'INIT':
+      return action.payload
     // 6.4
     case 'CREATE':
       console.log('CREATE:', action.payload.content)
