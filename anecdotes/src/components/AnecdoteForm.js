@@ -25,10 +25,13 @@ const AnecdoteForm = (props) => {
   }
 
   return (
-    <form id="create-form" onSubmit={getInput}>
-      <div><input name="anecdote" style = {{ width: "25%" }}/></div>
-      <button type="submit">create</button>
-    </form>
+    <>
+    <h2>Create New</h2>
+      <form id="create-form" onSubmit={getInput}>
+        <div><input name="anecdote" style = {{ width: "25%" }}/></div>
+        <button type="submit">create</button>
+      </form>
+    </>
   )
 }
 
