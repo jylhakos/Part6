@@ -17,17 +17,29 @@ const asObject = (anecdote) => {
   }
 }
 
+export const create = (anecdote) => {
+  return {
+    type: 'CREATE',
+    payload: {
+      content: anecdote,
+      id: getId(),
+      votes: 0
+    }
+  }
+}
+
 const initialState = anecdotesAtStart.map(asObject)
 
-console.log('1. initialState: ', typeof initialState, initialState )
+console.log('INITIAL STATE: ', typeof initialState, initialState )
 
 const reducer = (state = initialState, action) => {
 
   console.log('1. state: ', state, ' action', action)
 
   switch (action.type) {
+    // 6.3
     case 'VOTE':
-      console.log('1. action.type', action.type, ' action.payload', action.payload)
+      console.log('VOTE:', action.type, ' action.payload', action.payload)
       return state.map(anecdote => {
         if (anecdote.id !== action.payload) {
           return anecdote
@@ -37,13 +49,12 @@ const reducer = (state = initialState, action) => {
           votes: anecdote.votes+1
         }
       })
+    // 6.4
     case 'CREATE':
-    return {
-        ...state,
-        ok: state.ok+1
-      }
+      console.log('CREATE:', action.payload.content)
+      return state.concat(action.payload)
     default:
-      console.log('1. state', state)
+      console.log('0. state', state)
       return state
   }
 }
