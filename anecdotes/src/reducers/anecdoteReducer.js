@@ -35,12 +35,12 @@ console.log('INITIAL STATE: ', typeof initialState, initialState )
 
 const reducer = (state = initialState, action) => {
 
-  console.log('1. state: ', state, ' action', action)
+  console.log('STATE: ', state, ' ACTION', action)
 
   switch (action.type) {
     // 6.3
     case 'VOTE':
-      console.log('VOTE:', action.type, ' action.payload', action.payload)
+      console.log('VOTE:', action.type, 'ACTION.PAYLOAD', action.payload)
       return state.map(anecdote => {
         if (anecdote.id !== action.payload) {
           return anecdote
