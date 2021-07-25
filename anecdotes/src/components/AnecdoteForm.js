@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 
 import { create } from './../reducers/anecdoteReducer'
 
+import { show, hide } from './../reducers/notificationReducer'
+
 // 6.7
 const AnecdoteForm = (props) => {
 
@@ -22,6 +24,13 @@ const AnecdoteForm = (props) => {
     dispatch(create(anecdote))
 
     document.getElementById("create-form").reset()
+
+    // 6.11
+    dispatch(show('you created ' + anecdote))
+
+    setTimeout(() => {
+      dispatch(show('HIDE'))
+      }, 10000)
   }
 
   return (

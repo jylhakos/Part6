@@ -28,7 +28,7 @@ const AnecdoteList = () => {
 
 		setTimeout(() => {
 			dispatch(show('HIDE'))
-    	}, 10000)
+    	}, 5000)
 	}
 
 	console.log('ANECDOTELIST', anecdotes)
