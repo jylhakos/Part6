@@ -20,6 +20,7 @@ const App = () => {
     })
   }
 
+  // 6.4
   function getInput(event) {
 
     event.preventDefault()
@@ -28,7 +29,10 @@ const App = () => {
 
     console.log('ANECDOTE', anecdote)
 
+    // 6.6
     dispatch(create(anecdote))
+
+    document.getElementById("create-form").reset();
   }
 
   return (
@@ -48,8 +52,8 @@ const App = () => {
         </div>
       )}
       <h2>create new</h2>
-      <form onSubmit={getInput}>
-        <div><input name="anecdote"/></div>
+      <form id="create-form" onSubmit={getInput}>
+        <div><input name="anecdote" style = {{ width: "25%" }}/></div>
         <button type="submit">create</button>
       </form>
     </div>

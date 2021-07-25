@@ -10,7 +10,6 @@ import reducer from './reducers/anecdoteReducer'
 //});
 
 const store = createStore(reducer)
-//const store = createStore(anecdotesReducer)
 
 ReactDOM.render(
   <Provider store={store}>

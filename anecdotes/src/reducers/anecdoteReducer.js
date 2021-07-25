@@ -17,6 +17,7 @@ const asObject = (anecdote) => {
   }
 }
 
+// 6.6
 export const create = (anecdote) => {
   return {
     type: 'CREATE',
@@ -54,7 +55,7 @@ const reducer = (state = initialState, action) => {
       console.log('CREATE:', action.payload.content)
       return state.concat(action.payload)
     default:
-      console.log('0. state', state)
+      console.log('STATE', state)
       return state
   }
 }
