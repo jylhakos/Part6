@@ -22,9 +22,10 @@ export const create = (anecdote) => {
   return {
     type: 'CREATE',
     payload: {
-      content: anecdote,
-      id: getId(),
-      votes: 0
+      content: anecdote.content,
+      //id: getId(),
+      id: anecdote.id,
+      votes: anecdote.votes
     }
   }
 }

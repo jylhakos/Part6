@@ -21,4 +21,12 @@ const getAll = async () => {
   return response.data
 }
 
-export default { getAll }
+// 6.14
+const createNew = async (object) => {
+
+  const response = await axios.post(baseUrl, object)
+
+  return response.data
+}
+
+export default { getAll, createNew }
