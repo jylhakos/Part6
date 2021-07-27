@@ -6,11 +6,19 @@ import AnecdoteList from './components/AnecdoteList'
 
 import AnecdoteForm from './components/AnecdoteForm'
 
+// 6.15
+// $ npm run server
+// $ npm start
+
 // 6.13
 // import anecdotesService from './../services/anecdotes'
-// import anecdoteReducer from './../reducers/anecdoteReducer'
+
+// 6.15
+import {initializeAnecdotes} from './reducers/anecdoteReducer'
 
 const App = () => {
+
+  const dispatch = useDispatch()
 
   // 6.13
   /*useEffect(() => {
@@ -18,6 +26,11 @@ const App = () => {
         store.dispatch(initializeAnecdotes(anecdotes))
     }
   }, [])*/
+
+  // 6.15
+  useEffect(() => {
+    dispatch(initializeAnecdotes()) 
+  },[dispatch]) 
 
   return (
     <div>

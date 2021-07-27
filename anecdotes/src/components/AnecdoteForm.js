@@ -33,10 +33,10 @@ const AnecdoteForm = (props) => {
 
     console.log('ANECDOTE', object.content)
 
-    // 6.14
-    const newAnecdote = await anecdotesService.createNew(object)
+    // 6.14, 6.16
+    //const newAnecdote = await anecdotesService.createNew(object)
 
-    // 6.6
+    // 6.6, 6.16
     dispatch(create(object))
 
     document.getElementById("create-form").reset()

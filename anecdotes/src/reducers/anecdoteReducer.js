@@ -1,3 +1,6 @@
+// 6.15
+import anecdotesService from './../services/anecdotes'
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -18,7 +21,7 @@ const asObject = (anecdote) => {
 }
 
 // 6.6
-export const create = (anecdote) => {
+/*export const create = (anecdote) => {
   return {
     type: 'CREATE',
     payload: {
@@ -28,16 +31,46 @@ export const create = (anecdote) => {
       votes: anecdote.votes
     }
   }
+}*/
+
+// 6.16
+export const create = (object) => {
+  return async dispatch => {
+    const newAnecdote = await anecdotesService.createNew(object)
+    dispatch({
+      type: 'CREATE',
+      payload: {
+        content: object.content,
+        //id: getId(),
+        id: object.id,
+        votes: object.votes
+      }
+    })
+  }
 }
 
-export const initializeAnecdotes = (anecdote) => {
+
+// 6.13
+/*export const initializeAnecdotes = (anecdotes) => {
   return {
     type: 'INIT',
-    payload: {
-      content: anecdote.content,
-      id: anecdote.id,
-      votes: anecdote.votes
-    }
+    payload: anecdotes
+  }
+}*/
+
+// 6.15
+export const initializeAnecdotes = () => {
+
+  return async dispatch => {
+
+    const anecdotes = await anecdotesService.getAll()
+
+    console.log(anecdotes)
+
+    dispatch({
+      type: 'INIT',
+      payload: anecdotes
+    })
   }
 }
 

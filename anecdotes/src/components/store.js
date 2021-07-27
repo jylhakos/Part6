@@ -1,5 +1,9 @@
+// 6.15
+// $ npm install redux-thunk
+import thunk from 'redux-thunk'
+
 // 6.9
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 // $ npm install --save-dev redux-devtools-extension
 
@@ -19,10 +23,10 @@ const reducer = combineReducers({
 
 //const dispatch = useDispatch()
 
-const store = createStore(reducer, composeWithDevTools())
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
 
 // 6.13
-anecdotesService.getAll().then(anecdotes =>
+/*anecdotesService.getAll().then(anecdotes =>
     anecdotes.forEach(anecdote => {
         store.dispatch({ type: 'CREATE',
             payload: {
@@ -32,7 +36,7 @@ anecdotesService.getAll().then(anecdotes =>
             }
         })
   }))
-
+*/
 console.log(store.getState())
 
 export default store;
