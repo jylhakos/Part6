@@ -22,11 +22,19 @@ const getAll = async () => {
 }
 
 // 6.14
-const createNew = async (object) => {
+const create = async (object) => {
 
   const response = await axios.post(baseUrl, object)
 
   return response.data
 }
 
-export default { getAll, createNew }
+// 6.17
+const update = async (id, votes) => {
+
+  const response = await axios.put(`${baseUrl}/${id}`, votes)
+
+  return response.data
+}
+
+export default { getAll, create, update }

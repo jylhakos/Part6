@@ -1,6 +1,8 @@
 // 6.15
 import anecdotesService from './../services/anecdotes'
 
+import { show, hide } from './../reducers/notificationReducer'
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -35,8 +37,11 @@ const asObject = (anecdote) => {
 
 // 6.16
 export const create = (object) => {
+
   return async dispatch => {
-    const newAnecdote = await anecdotesService.createNew(object)
+
+    const newAnecdote = await anecdotesService.create(object)
+
     dispatch({
       type: 'CREATE',
       payload: {
@@ -49,6 +54,30 @@ export const create = (object) => {
   }
 }
 
+// 6.17
+export const update = (type, anecdote) => {
+
+  console.log('UPDATE', type, anecdote.content, anecdote.id, anecdote.votes)
+
+  return async dispatch => {
+
+    // TODO: REDUCER TO UPDATE VOTES
+    /*dispatch({
+      type: 'VOTE',
+      payload: {
+        id: anecdote.id
+      }
+    })*/
+
+    const updateAnecdote = await anecdotesService.update(anecdote.id, { content: anecdote.content, id: anecdote.id, votes: anecdote.votes + 1 })
+
+    dispatch(show('you voted ' + anecdote.content))
+
+    setTimeout(() => {
+      dispatch(show('HIDE'))
+      }, 5000)
+  }
+}
 
 // 6.13
 /*export const initializeAnecdotes = (anecdotes) => {
@@ -88,11 +117,18 @@ const anecdoteReducer = (state = [], action) => {
   switch (action.type) {
     // 6.3
     case 'VOTE':
+
       console.log('VOTE:', action.type, 'ACTION.PAYLOAD', action.payload)
+
       return state.map(anecdote => {
+
+        console.log('anecdote.id', anecdote.id)
+
         if (anecdote.id !== action.payload) {
+
           return anecdote
         }
+
         return {
           ...anecdote,
           votes: anecdote.votes+1

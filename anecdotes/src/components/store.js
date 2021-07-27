@@ -18,7 +18,8 @@ import anecdotesService from './../services/anecdotes'
 
 const reducer = combineReducers({
     anecdotes: anecdoteReducer,
-    notification: notificationReducer
+    notification: notificationReducer,
+    // TODO: REDUCER TO UPDATE VOTES
 })
 
 //const dispatch = useDispatch()
