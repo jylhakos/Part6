@@ -272,5 +272,5 @@ A link to Redux.
 
 https://redux.js.org/tutorials/essentials/part-1-overview-concepts
 
-![alt text](https://github.com/jylhakos/Part6/tree/main/Part6.png?raw=true)
+![alt text](https://github.com/jylhakos/Part6/blob/main/Part6.png?raw=true)
 
